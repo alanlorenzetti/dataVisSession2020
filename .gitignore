@@ -1,0 +1,13 @@
+20200811_data_visulation_session.Rproj
+
+/plot
+/dataSource
+
+addCommitPush.sh
+
+*.Rproj.user
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store

@@ -1,0 +1,140 @@
+---
+title: "Data visualization hands-on session"
+author: "Alan Lorenzetti"
+date: "8/11/2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(DT)
+```
+
+# Introduction
+
+In this session we will try to cover a few topics on data visualization.
+
+1. We are going to reproduce a protein-protein interaction network I've made for a paper published recently. For that, we are going to use Cytoscape.
+2. We will explore different types of variables and plot them using the R language environment. More specifically we will use RStudio Cloud and a package called `tidyverse`.
+
+# Cytoscape
+
+## Installing Cytoscape and add-ins (or plugins)
+
+## Data structure
+
+## Plotting a protein-protein interaction network
+
+### Context
+
+### Execution
+
+# Visualization in R using the `tidyverse` package
+
+## Installing `tidyverse` package
+
+```{r install}
+#install.packages("tidyverse")
+library(tidyverse)
+
+haloExp = read_tsv("data/haloExpression.tsv")
+```
+
+## Variable types
+
+### Discrete variables
+
+* Counts:  
+
+  + The number of times you cursed this damn virus this week (5)
+  + Number of stars in the Milky Way (250 billion or 2.5 x 10^11)
+  + Number of genes in a genome (2600)
+  + Number of messenger RNA molecules in a bacterial cell (~1800) [Moran et al. 2013]
+  + Length of a messenger RNA (1573 nucleotides)
+
+### Continuous variables
+
+* Measures:
+
+  + Height of an individual (162.56 centimeters) 
+  + Weight of an individual (89.77 kilograms)
+
+* Ratios:  
+
+  + GC content, i.e., frequency of Guanine or Cytosine bases in a transcript (e.g. 973/1573 = 0.619)
+
+### Categorical variables
+
+* Characteristics:  
+  + Color of eyes (black, brown, blue, green, red)
+  + Transcript type (protein coding, transporter RNA, ribosomal RNA)
+
+## Data structure
+
+```{r dataStructure, echo=F}
+datatable(haloExp)
+```
+
+## Visualizations
+
+### Using a single variable
+
+#### Histograms
+
+```{r histogram}
+ggplot(data = haloExp, mapping = aes(x = length)) +
+  geom_histogram()
+```
+
+#### Density curves
+
+```{r density}
+ggplot(data = haloExp, mapping = aes(x = GC)) +
+  geom_density()
+```
+
+#### Bar plots
+
+```{r bar}
+ggplot(data = haloExp, mapping = aes(x = biological_class)) +
+  geom_bar() +
+  coord_flip()
+```
+
+#### Boxplots
+
+
+
+### Using two variables
+
+#### Scatter plots
+
+```{r scatter}
+ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
+  geom_point()
+```
+
+
+### Using three variables
+
+### Using multiple variables
+
+#### 3D scatter plots
+
+#### Heat maps
+
+### Exercises
+
+# Resources
+
+* [RStudio IDE cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf)
+* [`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) 
+
+# References 
+
+MORAN, M. A. et al. Sizing up metatranscriptomics. The ISME Journal, v. 7, n. 2, p. 237–243, fev. 2013.
