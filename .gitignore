@@ -1,10 +1,7 @@
-20200811_data_visulation_session.Rproj
-
+20200811_data_visualization_session.Rproj
 /plot
 /dataSource
-
 addCommitPush.sh
-
 *.Rproj.user
 .Rproj.user
 .Rhistory
