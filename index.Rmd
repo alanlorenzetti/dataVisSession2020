@@ -40,6 +40,7 @@ In this session we will try to cover a few topics on data visualization.
 ```{r install}
 #install.packages("ggplot2")
 library(ggplot2)
+theme_set(theme_bw())
 
 haloExp = read.delim("data/haloExpression.tsv")
 ```
@@ -79,9 +80,13 @@ haloExp = read.delim("data/haloExpression.tsv")
 datatable(haloExp)
 ```
 
-## Visualizations
+## Syntax
 
-### Using a single variable
+```{r syntax, echo=F, include = F}
+knitr::include_graphics("img/ggplotSyntax.png")
+```
+
+## Visualizations
 
 #### Histograms
 
@@ -93,7 +98,7 @@ ggplot(data = haloExp, mapping = aes(x = length)) +
 #### Density curves
 
 ```{r density}
-ggplot(data = haloExp, mapping = aes(x = GC)) +
+ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_density()
 ```
 
@@ -107,9 +112,11 @@ ggplot(data = haloExp, mapping = aes(x = biological_class)) +
 
 #### Boxplots
 
-
-
-### Using two variables
+```{r boxplot}
+ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
+  geom_boxplot() +
+  coord_flip()
+```
 
 #### Scatter plots
 
@@ -118,16 +125,23 @@ ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression
   geom_point()
 ```
 
-
-### Using three variables
-
-### Using multiple variables
+```{r scatterGC}
+ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression, color = GC)) +
+  geom_point()
+```
 
 #### 3D scatter plots
 
 #### Heat maps
 
-### Exercises
+```{r heatmap, out.width = "400px", echo = F}
+knitr::include_graphics("img/figureSpectronaut.png")
+```
+
+## Exercises
+
+* Plot a density curve of the GC variable.
+* 
 
 # Resources
 
