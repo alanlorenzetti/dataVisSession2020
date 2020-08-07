@@ -5,8 +5,7 @@ date: "8/11/2020"
 output:
   html_document:
     toc: true
-    toc_depth: 4
-    toc_float: true
+    toc_depth: 3
 ---
 
 ```{r setup, include=FALSE}
@@ -20,7 +19,7 @@ library(DT)
 In this session we will try to cover a few topics on data visualization.
 
 1. We are going to reproduce a protein-protein interaction network I've made for a paper published recently. For that, we are going to use Cytoscape.
-2. We will explore different types of variables and plot them using the R language environment. More specifically we will use RStudio Cloud and a package called `tidyverse`.
+2. We will explore different types of variables and plot them using the R language environment. More specifically we will use RStudio Cloud and a package called `ggplot2`.
 
 # Cytoscape
 
@@ -34,15 +33,15 @@ In this session we will try to cover a few topics on data visualization.
 
 ### Execution
 
-# Visualization in R using the `tidyverse` package
+# Visualization in R using the `ggplot2` package
 
-## Installing `tidyverse` package
+## Installing `ggplot2` package
 
 ```{r install}
-#install.packages("tidyverse")
-library(tidyverse)
+#install.packages("ggplot2")
+library(ggplot2)
 
-haloExp = read_tsv("data/haloExpression.tsv")
+haloExp = read.delim("data/haloExpression.tsv")
 ```
 
 ## Variable types
