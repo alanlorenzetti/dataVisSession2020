@@ -8,6 +8,12 @@
 library(tidyverse)
 library(rtracklayer)
 
+# loading and removing duplicate entries of ppi file
+ppi = read_tsv("dataSource/ppi.sif", col_names = F) %>% 
+  distinct()
+
+write_tsv(ppi, path = "data/ppi.sif", col_names = F)
+
 # loading and filtering cytoscape classification dataset ####
 ppiFunCat = read_csv("dataSource/ppiFunCat.csv") %>% 
   select(ID = name,
@@ -29,6 +35,8 @@ ppiFunCat = read_csv("dataSource/ppiFunCat.csv") %>%
                              TRUE ~ as.character(class))) %>% 
   mutate(class = sub(pattern = "^hal..... ", replacement = "", x = class)) %>% 
   mutate(class = sub(pattern = "; .*$", replacement = "", x = class))
+
+
 
 # saving cytoscape dataset
 write_tsv(x = ppiFunCat, path = "data/ppiFunCat.tsv")

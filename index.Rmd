@@ -6,14 +6,18 @@ output:
   html_document:
     toc: true
     toc_depth: 3
+    number_sections: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 library(DT)
+library(tidyverse)
 
-ppi
+ppi = read_tsv("data/ppi.sif", col_names = F)
+colnames(ppi) = c("bait", "interaction", "protein")
+ppiFunCat = read_tsv("data/ppiFunCat.tsv")
 ```
 
 # Introduction
@@ -27,25 +31,88 @@ In this session we will try to cover a few topics on data visualization.
 
 ## Installing Cytoscape and add-ins (or plugins)
 
+* ClusterMaker2
+* Color cast
+* yFiles Layout Algorithms
+
 ## Data structure
 
-### Protein-protein interaction (ppi) network
-```{r ppiData}
+### Protein-protein interaction network
 
+This is the structure of a Simple Interaction File (SIF) 
+
+```{r ppiData, echo = F}
+datatable(ppi)
 ```
 
 ### Protein information
 
-```{r proteinInfo}
-
+```{r proteinInfo, echo = F}
+datatable(ppiFunCat)
 ```
-
 
 ## Plotting a protein-protein interaction network
 
 ### Context
 
+Is transcription and translation coupled in _Halobacterium salinarum_ ?
+
+Eukaryotes vs. Prokaryotes cellular organization
+
+```{r ppiFig, out.width = "500px", echo = F}
+knitr::include_graphics("img/ppiFig.jpg")
+```
+
+RPs physically interact with transcription complex components. Diamonds represent RPs; squares represent transcription complex components. Tagged proteins used as bait in the immunoprecipitation experiment are highlighted by a black border. Arrowheads link bait to coimmunoprecipitated proteins. We labeled each of the seven modules obtained by the Newman-Girvan clustering algorithm using a different color [de Lomana et al., 2020].
+
 ### Execution
+
+#### Downloading files
+
+* Download the protein-protein interaction [file](https://alanlorenzetti.github.io/dataVisSession2020/data/ppi.sif).
+
+* Download the protein information [file](https://alanlorenzetti.github.io/dataVisSession2020/data/ppiFunCat.tsv).
+
+#### Step by Step
+
+**1.** Import the protein-protein interaction file `ppi.sif`.  
+`File -> Import -> Network from file`  
+
+**2.** Load the protein information file.  
+
+  + In the node table panel, click on `Import Table from File`  
+
+**3.** Click on `Style` tab. Let's change the design of our network.
+
+  + Select the `Sample1` preset style.
+  + Change the label of nodes by selecting the `label` column.
+  + Change the shapes of nodes according to the functional `class` of proteins. Rectangles will represent `Transcription` class. Diamonds will represent `Translation` class.
+  + Add a border to nodes of proteins used as baits. Set size `2`.
+  + Make the nodes bigger. Select size `35`.
+  + Click on `Node` tab and make the edges wider (size `1.5`) and `black`.
+  + Add arrowheads (`Target Arrow Shape; Delta`) to the end of edges.
+  
+**4.** Apply the Newman-Girvan modularity algorithm to find modules of highly interconnected proteins. Use the default parameters.
+`Apps -> clusterMaker -> Community Cluster (GLay)`
+
+**5.** Change the color of nodes according to the modules. We will use a plugin called `Color Cast` to make our lives easier. Select `__glayCluster` as the target data column. We'll apply the `Set2` colors.
+`Tools -> Color Cast -> Color Cast`
+
+**6.** Remove all the nodes not classified as `Transcription` or `Translation`.
+
+  + Using the `Node Table` panel, order the class column and select all proteins of those classes.
+  + Then right-click the selection and then click on `Select nodes from selected rows`.
+  + Hide the unselected nodes. `Select -> Nodes -> Hide Unselected Nodes`.
+  
+**7.** Apply an automatic layout.
+
+  + Select all proteins used as baits (those with borders).
+  + Apply yFiles `Hierarchic Layout Selected Nodes`. `Layouts -> Hierarchic Layout Selected Nodes`.
+  
+**8.** Save your network and export as an image file.
+
+  + `File -> Save`
+  + `File -> Export -> Network to Image`
 
 # Visualization in R using the `ggplot2` package
 
@@ -163,5 +230,7 @@ knitr::include_graphics("img/figureSpectronaut.png")
 * [`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) 
 
 # References 
+
+DE LOMANA, A. et al. Selective Translation of Low Abundance and Upregulated Transcripts in Halobacterium salinarum. mSystems, v. 5, n. 4, 28 jul. 2020.
 
 MORAN, M. A. et al. Sizing up metatranscriptomics. The ISME Journal, v. 7, n. 2, p. 237–243, fev. 2013.
