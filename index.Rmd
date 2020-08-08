@@ -29,11 +29,29 @@ In this session we will try to cover a few topics on data visualization.
 
 # Network visualization using Cytoscape
 
-## Installing Cytoscape and add-ins (or plugins)
+## Context
 
-* ClusterMaker2
-* Color cast
-* yFiles Layout Algorithms
+Is transcription and translation coupled in _Halobacterium salinarum_ ?
+
+Eukaryotes vs. Prokaryotes cellular organization
+
+```{r ppiFig, out.width = "500px", echo = F}
+knitr::include_graphics("img/ppiFig.jpg")
+```
+
+RPs physically interact with transcription complex components. Diamonds represent RPs; squares represent transcription complex components. Tagged proteins used as bait in the immunoprecipitation experiment are highlighted by a black border. Arrowheads link bait to coimmunoprecipitated proteins. We labeled each of the seven modules obtained by the Newman-Girvan clustering algorithm using a different color [de Lomana et al., 2020].
+
+## Installing Cytoscape and apps (or plugins)
+
+1. Go to the Cytoscape [download page](https://cytoscape.org/download.html) and install it.
+
+2. Open Cytoscape program and install the following apps:
+  + clusterMaker2  
+  `Apps -> App Manager -> Search: clusterMaker2 -> Select listing -> Install`  
+  + Color Cast  
+  `Apps -> App Manager -> Search: Color Cast -> Select listing -> Install`  
+  + yFiles Layout Algorithms  
+  `Apps -> App Manager -> Search: yFiles -> Select listing -> Install`  
 
 ## Data structure
 
@@ -52,18 +70,6 @@ datatable(ppiFunCat)
 ```
 
 ## Plotting a protein-protein interaction network
-
-### Context
-
-Is transcription and translation coupled in _Halobacterium salinarum_ ?
-
-Eukaryotes vs. Prokaryotes cellular organization
-
-```{r ppiFig, out.width = "500px", echo = F}
-knitr::include_graphics("img/ppiFig.jpg")
-```
-
-RPs physically interact with transcription complex components. Diamonds represent RPs; squares represent transcription complex components. Tagged proteins used as bait in the immunoprecipitation experiment are highlighted by a black border. Arrowheads link bait to coimmunoprecipitated proteins. We labeled each of the seven modules obtained by the Newman-Girvan clustering algorithm using a different color [de Lomana et al., 2020].
 
 ### Execution
 
