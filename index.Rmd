@@ -12,6 +12,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 
 library(DT)
+
+ppi
 ```
 
 # Introduction
@@ -26,6 +28,18 @@ In this session we will try to cover a few topics on data visualization.
 ## Installing Cytoscape and add-ins (or plugins)
 
 ## Data structure
+
+### Protein-protein interaction (ppi) network
+```{r ppiData}
+
+```
+
+### Protein information
+
+```{r proteinInfo}
+
+```
+
 
 ## Plotting a protein-protein interaction network
 

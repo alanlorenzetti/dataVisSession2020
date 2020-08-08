@@ -1,0 +1,129 @@
+ID	label	is_bait	product	class
+VNG5039G	TbpA	TRUE	Product Unknown	Transcription
+VNG5142G	TbpC	TRUE	Product Unknown	Transcription
+VNG2218G	VNG2218G	FALSE	2-oxo-3-methylvalerate dehydrogenase E1component beta subunit	Glycolysis / Gluconeogenesis
+VNG6313G	VNG6313G	FALSE	arginine/ornithine antiporter	Class Unknown
+VNG1149Cm	VNG1149Cm	FALSE	Product Unknown	Class Unknown
+VNG1933G	VNG1933G	FALSE	FtsZ family protein CetZ, type III	Class Unknown
+VNG0209H	VNG0209H	FALSE	uncharacterized protein	Class Unknown
+VNG5163G	TbpD	TRUE	Product Unknown	Transcription
+VNG1932G	VNG1932G	FALSE	arNOG06768 family NADH-binding domain protein	Oxidative phosphorylation
+VNG6029G	VNG6029G	FALSE	gas-vesicle major structural protein GvpA	Class Unknown
+VNG2473G	VNG2473G	FALSE	DNA repair and recombination protein RadA	Class Unknown
+VNG2243G	TbpE	TRUE	TATA-binding transcription initiation factor	Transcription
+VNG1830G	VNG1830G	FALSE	CTP synthase	Pyrimidine metabolism
+VNG1668G	Rps8e	FALSE	30S ribosomal protein S8e	Translation
+VNG5052G	TbpB	TRUE	Product Unknown	Transcription
+VNG6316G	VNG6316G	FALSE	carbamate kinase	Arginine biosynthesis
+VNG0575G	VNG0575G	FALSE	probable M28 family peptidase (homolog toaminopeptidase YwaD)	Class Unknown
+VNG1125G	VNG1125G	FALSE	pyruvate--ferredoxin oxidoreductase betasubunit	Glycolysis / Gluconeogenesis
+VNG1689G	Rpl3p	FALSE	50S ribosomal protein L3	Translation
+VNG1433G	Rps17e	FALSE	30S ribosomal protein S17e	Translation
+VNG6309G	VNG6309G	FALSE	aspartate carbamoyltransferase catalyticsubunit	Pyrimidine metabolism
+VNG6143H	VNG6143H	FALSE	uncharacterized protein	Class Unknown
+VNG2664Gm	RpoA	FALSE	Product Unknown	Transcription
+VNG0315G	TfbF	TRUE	transcription initiation factor TFB	Transcription
+VNG1144H	VNG1144H	FALSE	glyoxalase domain protein	Class Unknown
+VNG6438G	TbpF	TRUE	TATA-binding transcription initiation factor	Transcription
+VNG0620G	VNG0620G	FALSE	signal peptide peptidase SppA	Class Unknown
+VNG1821G	VNG1821G	FALSE	NADPH:quinone reductase	Class Unknown
+VNG1564H	VNG1564H	FALSE	PQQ repeat protein	Class Unknown
+VNG2349G	VNG2349G	FALSE	ABC-type transport system periplasmic substrate-binding protein (probable substratedipeptide/oligopeptide)	Quorum sensing
+VNG0178H	VNG0178H	FALSE	homolog to restriction system mrr	Class Unknown
+VNG0734G	TfbB	TRUE	transcription initiation factor TFB	Transcription
+VNG0891G	VNG0891G	FALSE	probable NADH dehydrogenase	Oxidative phosphorylation
+VNG2616G	VNG2616G	FALSE	metal-dependent carboxypeptidase	Class Unknown
+VNG1435G	VNG1435G	FALSE	aspartate-semialdehyde dehydrogenase	Glycine, serine and threonine metabolism
+VNG0679G	VNG0679G	FALSE	acyl-CoA dehydrogenase	Class Unknown
+VNG0930G	VNG0930G	FALSE	monooxygenase (homolog to alkanesulfonatemonooxygenase)	Class Unknown
+VNG2437G	VNG2437G	FALSE	argininosuccinate synthase	Arginine biosynthesis
+VNG1692G	Rpl2p	FALSE	50S ribosomal protein L2	Translation
+VNG0527C	VNG0527C	FALSE	SufB domain protein	Class Unknown
+VNG6317G	VNG6317G	FALSE	arginine deiminase	Arginine biosynthesis
+VNG2513G	VNG2513G	FALSE	aldehyde dehydrogenase	Glycolysis / Gluconeogenesis
+VNG0498C	VNG0498C	FALSE	uncharacterized protein	Class Unknown
+VNG1873G	VNG1873G	FALSE	isocitrate dehydrogenase (NADP)	Citrate cycle (TCA cycle)
+VNG2546G	VNG2546G	FALSE	aminopeptidase (homolog to leucyl aminopeptidase/ aminopeptidase T)	Class Unknown
+VNG0715G	VNG0715G	FALSE	phosphomethylpyrimidine synthase	Thiamine metabolism
+VNG2400H	VNG2400H	FALSE	uncharacterized protein	Class Unknown
+VNG1414G	VNG1414G	FALSE	serine hydroxymethyltransferase	Glycine, serine and threonine metabolism
+VNG0889G	VNG0889G	FALSE	DNA gyrase subunit A	Class Unknown
+VNG0461G	VNG0461G	FALSE	aspartate--tRNA(Asp/Asn) ligase	Aminoacyl-tRNA biosynthesis
+VNG2422G	VNG2422G	FALSE	FAD-dependent oxidoreductase (GlcD/DLD_GlcF/GlpCdomain fusion protein)	Class Unknown
+VNG6389G	TfbE	TRUE	transcription initiation factor TFB	Transcription
+VNG0525C	VNG0525C	FALSE	SufB domain protein	Class Unknown
+VNG0259G	VNG0259G	FALSE	inorganic pyrophosphatase	Oxidative phosphorylation
+VNG0584H	VNG0584H	FALSE	cytochrome bc1 complex Rieske iron-sulfurprotein	Class Unknown
+VNG2373G	VNG2373G	FALSE	tryptophanase	Tryptophan metabolism
+Chr_ORF2403	Chr_ORF2403	FALSE	Product Unknown	Class Unknown
+VNG1723H	VNG1723H	FALSE	uncharacterized protein	Class Unknown
+VNG0459G	VNG0459G	FALSE	homolog to sulfate adenylyltransferase smallsubunit	Sulfur metabolism
+VNG0681G	VNG0681G	FALSE	3-hydroxyacyl-CoA dehydrogenase	Phenylalanine metabolism
+VNG2367G	VNG2367G	FALSE	malate dehydrogenase	Citrate cycle (TCA cycle)
+VNG1128G	VNG1128G	FALSE	pyruvate--ferredoxin oxidoreductase alphasubunit	Glycolysis / Gluconeogenesis
+VNG2443G	VNG2443G	FALSE	ferritin DpsA	Class Unknown
+VNG2220G	VNG2220G	FALSE	dihydrolipoyl dehydrogenase	Glycolysis / Gluconeogenesis
+VNG2122G	VNG2122G	FALSE	branched-chain amino acid aminotransferase	Cysteine and methionine metabolism
+VNG6294G	VNG6294G	FALSE	catalase-peroxidase	Phenylalanine metabolism
+VNG0932C	VNG0932C	FALSE	acetyl-CoA C-acetyltransferase small subunit	Class Unknown
+VNG1446H	VNG1446H	FALSE	dodecin	Class Unknown
+VNG2527G	VNG2527G	FALSE	ABC-type transport system periplasmic substrate-binding protein (probable substratedipeptide/oligopeptide)	Quorum sensing
+VNG1089G	VNG1089G	FALSE	adenylosuccinate synthase	Purine metabolism
+VNG1686G	VNG1686G	FALSE	probable methenyltetrahydrofolatecyclohydrolase	Methane metabolism
+VNG1464G	Bat	TRUE	bacterioopsin activator Bat	Transcription
+VNG2023G	VNG2023G	FALSE	probable oxidoreductase (aldo-keto reductasefamily protein)	Class Unknown
+VNG0491G	VNG0491G	FALSE	Hsp70-type molecular chaperone DnaK	RNA degradation
+VNG0414G	VNG0414G	FALSE	phosphoribosylglycinamide formyltransferase /phosphoribosylaminoimidazolecarboxamide formyltransferase	Purine metabolism
+VNG0234C	VNG0234C	FALSE	prefoldin beta subunit	Class Unknown
+Chr_ORF0320	Chr_ORF0320	FALSE	Product Unknown	Class Unknown
+VNG1038C	VNG1038C	FALSE	metal-dependent hydrolase domain protein	Class Unknown
+VNG1663C	VNG1663C	FALSE	CBS domain protein	Class Unknown
+VNG0254G	TfbG	TRUE	transcription initiation factor TFB	Transcription
+VNG2289G	VNG2289G	FALSE	methylaspartate ammonia-lyase	Glyoxylate and dicarboxylate metabolism
+VNG1555G	VNG1555G	FALSE	cobalt-factor-III C17-methyltransferase	Porphyrin and chlorophyll metabolism
+VNG1156G	VNG1156G	FALSE	tRNA(Met) cytidine acetyltransferase TmcA	Class Unknown
+VNG2160C	VNG2160C	FALSE	replication protein A	DNA replication
+VNG2569H	VNG2569H	FALSE	uncharacterized protein	Class Unknown
+VNG0401G	VNG0401G	FALSE	zinc-dependent nuclease	Class Unknown
+VNG0782H	VNG0782H	FALSE	HEAT-PBS family protein	Class Unknown
+VNG0675C	VNG0675C	FALSE	alpha/beta hydrolase fold protein	Class Unknown
+VNG1255C	VNG1255C	FALSE	replication protein A	DNA replication
+VNG0161G	VNG0161G	FALSE	glutamate dehydrogenase (NAD)	Arginine biosynthesis
+VNG2203G	VNG2203G	FALSE	ribose-phosphate pyrophosphokinase	Pentose phosphate pathway
+VNG0102C	VNG0102C	FALSE	HAD superfamily hydrolase	Class Unknown
+VNG1797G	VNG1797G	FALSE	homoserine kinase	Glycine, serine and threonine metabolism
+VNG2502C	VNG2502C	FALSE	HD family hydrolase	Class Unknown
+VNG2088G	VNG2088G	FALSE	tRNA (guanine(26)-N(2))-dimethyltransferase	Class Unknown
+VNG0749G	VNG0749G	FALSE	probable PrkA-type serine/threonine proteinkinase	Class Unknown
+VNG0406C	VNG0406C	FALSE	glycerol-1-phosphate dehydrogenase (NAD(P))	Glycerophospholipid metabolism
+VNG1957G	VNG1957G	FALSE	archaeosine synthase	Class Unknown
+VNG0851C	VNG0851C	FALSE	metal-dependent hydrolase domain protein	Ascorbate and aldarate metabolism
+VNG1912G	VNG1912G	FALSE	probable phosphoribosyltransferase (homolog toanthranilate phosphoribosyltransferase)	Phenylalanine, tyrosine and tryptophan biosynthesis
+VNG0637G	VNG0637G	FALSE	NADH dehydrogenase-like complex subunit CD	Oxidative phosphorylation
+VNG1834G	VNG1834G	FALSE	peroxiredoxin domain protein	Class Unknown
+VNG6031G	VNG6031G	FALSE	gas-vesicle minor protein GvpC	Class Unknown
+VNG1184Gm	VNG1184Gm	FALSE	Product Unknown	Class Unknown
+VNG1537C	VNG1537C	FALSE	HD family hydrolase	Class Unknown
+VNG2138G	VNG2138G	FALSE	A-type ATP synthase subunit B	Oxidative phosphorylation
+VNG1510C	Elp3-homolog	FALSE	homolog to elongator complex protein ELP3	Transcription
+VNG1660G	VNG1660G	FALSE	sensory rhodopsin I	Class Unknown
+VNG1969G	VNG1969G	FALSE	glycerol-3-phosphate dehydrogenase subunit A	Glycerophospholipid metabolism
+VNG6311G	VNG6311G	FALSE	aspartate carbamoyltransferase regulatorysubunit	Pyrimidine metabolism
+VNG6351G	TfbC	TRUE	transcription initiation factor TFB	Transcription
+VNG2366C	VNG2366C	FALSE	UPF0148 family protein	Class Unknown
+VNG2430G	VNG2430G	FALSE	threonine synthase	Glycine, serine and threonine metabolism
+VNG2037C	VNG2037C	FALSE	sensor box histidine kinase	Class Unknown
+VNG0869G	TfbD	TRUE	transcription initiation factor TFB	Transcription
+VNG1292H	VNG1292H	FALSE	uncharacterized protein	Class Unknown
+VNG6312G	VNG6312G	FALSE	arginine--tRNA ligase	Aminoacyl-tRNA biosynthesis
+VNG5154H	VNG5154H	FALSE	Product Unknown	Class Unknown
+VNG1852H	VNG1852H	FALSE	DUF63 family protein	Class Unknown
+VNG2184G	TfbA	TRUE	transcription initiation factor TFB	Transcription
+VNG2636G	VNG2636G	FALSE	UvrABC system protein A	Nucleotide excision repair
+VNG0208H	VNG0208H	FALSE	uncharacterized protein	Class Unknown
+VNG0218G	VNG0218G	FALSE	type IV pilus biogenesis complex ATPase subunit	Class Unknown
+VNG2665G	RpoB'	FALSE	DNA-directed RNA polymerase subunit B'	RNA polymerase
+VNG1644G	VNG1644G	FALSE	ribonucleoside-diphosphate reductase,adenosylcobalamin-dependent	Purine metabolism
+VNG2620G	VNG2620G	FALSE	repair helicase UvrD	Nucleotide excision repair
+VNG0177G	Rpl15e	FALSE	50S ribosomal protein L15e	Translation
+VNG1437G	VNG1437G	FALSE	probable D-2-hydroxyacid dehydrogenase	Class Unknown

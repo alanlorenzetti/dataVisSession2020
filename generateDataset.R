@@ -8,6 +8,31 @@
 library(tidyverse)
 library(rtracklayer)
 
+# loading and filtering cytoscape classification dataset ####
+ppiFunCat = read_csv("dataSource/ppiFunCat.csv") %>% 
+  select(ID = name,
+         label,
+         is_bait,
+         product = productPfeiffer2019,
+         class = KEGGpathway) %>% 
+  mutate(label = case_when(is.na(label) ~ ID,
+                           TRUE ~ as.character(label)),
+         is_bait = case_when(is.na(is_bait) ~ FALSE,
+                             TRUE ~ is_bait),
+         product = case_when(is.na(product) ~ "Product Unknown",
+                             TRUE ~ as.character(product)),
+         class = case_when(is.na(class) ~ "Class Unknown",
+                           class == "hal03022 Basal transcription factors" ~ "Transcription",
+                           class == "tc" ~ "Transcription",
+                           class == "hal03010 Ribosome" ~ "Translation",
+                           class == "tl" ~ "Translation",
+                             TRUE ~ as.character(class))) %>% 
+  mutate(class = sub(pattern = "^hal..... ", replacement = "", x = class)) %>% 
+  mutate(class = sub(pattern = "; .*$", replacement = "", x = class))
+
+# saving cytoscape dataset
+write_tsv(x = ppiFunCat, path = "data/ppiFunCat.tsv")
+
 # loading datasets ####
 funcat = read_tsv("dataSource/funcat.tsv") %>% 
   select(-HL, -cai, -locus_tag, -arCOG_ID, -arCOGcode, - arCOGproduct) %>% 
