@@ -27,7 +27,7 @@ In this session we will try to cover a few topics on data visualization.
 1. We are going to reproduce a protein-protein interaction network I've made for a paper published recently. For that, we are going to use Cytoscape.
 2. We will explore different types of variables and plot them using the R language environment. More specifically we will use RStudio Cloud and a package called `ggplot2`.
 
-# Cytoscape
+# Network visualization using Cytoscape
 
 ## Installing Cytoscape and add-ins (or plugins)
 
@@ -86,10 +86,10 @@ RPs physically interact with transcription complex components. Diamonds represen
 
   + Select the `Sample1` preset style.
   + Change the label of nodes by selecting the `label` column.
-  + Change the shapes of nodes according to the functional `class` of proteins. Rectangles will represent `Transcription` class. Diamonds will represent `Translation` class.
-  + Add a border to nodes of proteins used as baits. Set size `2`.
+  + Change the shape of nodes according to the functional `class` of proteins. Rectangles will represent `Transcription` class. Diamonds will represent `Translation` class.
+  + Click on `Node` tab and add a border to the nodes of proteins used as baits. Set size `2`.
   + Make the nodes bigger. Select size `35`.
-  + Click on `Node` tab and make the edges wider (size `1.5`) and `black`.
+  + Make the edges wider (size `1.5`) and `black`.
   + Add arrowheads (`Target Arrow Shape; Delta`) to the end of edges.
   
 **4.** Apply the Newman-Girvan modularity algorithm to find modules of highly interconnected proteins. Use the default parameters.
@@ -114,7 +114,7 @@ RPs physically interact with transcription complex components. Diamonds represen
   + `File -> Save`
   + `File -> Export -> Network to Image`
 
-# Visualization in R using the `ggplot2` package
+# Data visualization in R using the `ggplot2` package
 
 ## Installing `ggplot2` package
 
