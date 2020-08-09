@@ -190,6 +190,12 @@ datatable(haloExp)
 
 ## Syntax
 
+`ggplot(data = <YOUR_DATASET_HERE>, aes(x = <X_AXIS_VARIABLE>, y = <Y_AXIS_VARIABLE>))`  
++  
+`geom_<TYPE_OF_CHART>`  
++  
+`additional modifications`
+
 ```{r syntax, echo=F, include = F}
 knitr::include_graphics("img/ggplotSyntax.png")
 ```
@@ -214,6 +220,17 @@ ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_density()
 ```
 
+```{r densityColor}
+ggplot(data = haloExp, mapping = aes(x = length, color = length_category)) +
+  geom_density()
+```
+
+```{r densityColorFacet, fig.width = 10}
+ggplot(data = haloExp, mapping = aes(x = length, color = length_category)) +
+  geom_density(show.legend = FALSE) +
+  facet_wrap(~ length_category)
+```
+
 ### One variable (categorical)
 
 #### Bar plots 
@@ -221,6 +238,12 @@ ggplot(data = haloExp, mapping = aes(x = length)) +
 ```{r bar}
 ggplot(data = haloExp, mapping = aes(x = biological_class)) +
   geom_bar() +
+  coord_flip()
+```
+
+```{r barColor}
+ggplot(data = haloExp, mapping = aes(x = biological_class, fill = biological_class)) +
+  geom_bar(show.legend = FALSE) +
   coord_flip()
 ```
 
@@ -233,10 +256,32 @@ ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression
   geom_point()
 ```
 
+```{r scatterTrend, message = F, warning = F}
+ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+```{r scatterTrendFacet, fig.width = 10, message = F, warning = F}
+ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_grid(~ length_category)
+```
+
 ```{r scatterGC, message = F, warning = F}
 ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression, color = GC)) +
   geom_point()
 ```
+
+#### Bivariate distribution
+
+```{r biDist, message = F, warning = F}
+ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
+  geom_hex()
+```
+
+
 
 ### Two variables (x = categorical; y = continuous or discrete)
 
@@ -248,9 +293,19 @@ ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
   coord_flip()
 ```
 
+### Two variables (x = categorical; y = categorical)
+
+#### Count plot
+
+```{r countPlot}
+ggplot(data = haloExp, mapping = aes(y = length_category, x = biological_class)) +
+  geom_count() +
+  coord_flip()
+```
+
 ### Several variables of different types
 
-#### 3D scatter plots (x,y,z = continuous or discrete)
+#### 3D scatter plots (x, y, z = continuous or discrete)
 
 ```{r scatter3d, echo = F, message = F, warning = F}
 # https://fuzzyatelin.github.io/bioanth-stats/module-26/Module-26.html#an_interactive_3d_scatterplot
@@ -264,7 +319,7 @@ scatter3d = plot_ly(data = iris,
                     mode='markers',
                     color=Species)
 
-plotly::layout(scatter3d,title = "Iris Dataset in 3D")
+plotly::layout(scatter3d)
 ```
 
 #### Heat maps (continuous, discrete, and categorical variables altogether)
