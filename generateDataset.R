@@ -16,7 +16,7 @@ write_tsv(ppi, path = "data/ppi.sif", col_names = F)
 
 # loading and filtering cytoscape classification dataset ####
 ppiFunCat = read_csv("dataSource/ppiFunCat.csv") %>% 
-  select(ID = name,
+  dplyr::select(ID = name,
          label,
          is_bait,
          product = productPfeiffer2019,
@@ -36,15 +36,13 @@ ppiFunCat = read_csv("dataSource/ppiFunCat.csv") %>%
   mutate(class = sub(pattern = "^hal..... ", replacement = "", x = class)) %>% 
   mutate(class = sub(pattern = "; .*$", replacement = "", x = class))
 
-
-
 # saving cytoscape dataset
 write_tsv(x = ppiFunCat, path = "data/ppiFunCat.tsv")
 
 # loading datasets ####
 funcat = read_tsv("dataSource/funcat.tsv") %>% 
-  select(-HL, -cai, -locus_tag, -arCOG_ID, -arCOGcode, - arCOGproduct) %>% 
-  rename(pfeiLocusTag = "locus_tag")
+  dplyr::select(-HL, -cai, -locus_tag, -arCOG_ID, -arCOGcode, -arCOGproduct) %>% 
+  dplyr::rename(locus_tag = pfeiLocusTag)
 annot = rtracklayer::import("dataSource/Hsalinarum-gene-annotation-pfeiffer2019.gff3")
 exp = read_tsv("dataSource/exp.tsv")
 
@@ -61,20 +59,25 @@ funcat = left_join(funcat, df, by = "locus_tag")
 
 # merging exp dataset with funcat dataset
 final = left_join(funcat, exp, by = "locus_tag") %>% 
-  rename(locus_tag = "ID",
-         pfeiProduct = "protein_product",
-         arCOG = "biological_class",
-         mean_abundance_rna_total_TP2 = "mRNA_expression",
-         mean_abundance_protein_lysate_TP2 = "protein_expression") %>% 
-  select(ID,
-         protein_product,
-         biological_class,
-         mRNA_expression,
-         protein_expression,
-         length,
-         GC) %>% 
+  dplyr::rename(ID = locus_tag,
+                protein_product = pfeiProduct,
+                biological_class = arCOG,
+                mRNA_expression = mean_abundance_rna_total_TP2,
+                protein_expression = mean_abundance_protein_lysate_TP2) %>% 
+  dplyr::select(ID,
+                protein_product,
+                biological_class,
+                mRNA_expression,
+                protein_expression,
+                length,
+                GC) %>% 
   mutate(mRNA_expression = log10(mRNA_expression),
-         protein_expression = log10(protein_expression))
+         protein_expression = log10(protein_expression)) %>% 
+  mutate(length_category = cut_number(final$length, n = 3) %>% as.character(),
+         length_category = case_when(length_category == "[93,534]" ~ "short",
+                                     length_category == "(534,996]" ~ "mid",
+                                     length_category == "(996,4.11e+03]" ~ "long",
+                                     TRUE ~ "Unknown"))
 
 # writing final dataset
 openxlsx::write.xlsx(x = final, file = "data/haloExpression.xlsx", keepNA = T)

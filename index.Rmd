@@ -11,6 +11,8 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(warnings = FALSE)
+knitr::opts_chunk$set(message = FALSE)
 
 library(DT)
 library(tidyverse)
@@ -167,7 +169,7 @@ haloExp = read.delim("https://alanlorenzetti.github.io/dataVisSession2020/data/h
   + Height of an individual (162.56 centimeters) 
   + Weight of an individual (89.77 kilograms)
   + mRNA expression (1401.75 arbitrary expression unit)
-  + protein expression (1500.62 arbitrary expression unit)
+  + Protein expression (1500.62 arbitrary expression unit)
 
 * Ratios:  
 
@@ -194,21 +196,27 @@ knitr::include_graphics("img/ggplotSyntax.png")
 
 ## Visualizations
 
-### Histograms
+What kind of plot is suitable to my data? We have to think about the i) number of variables, ii) the type of variables, and iii) the goal of the visualization.
+
+### One variable (continuous or discrete)
+
+#### Histogram
 
 ```{r histogram}
 ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_histogram()
 ```
 
-### Density curves
+#### Density curves
 
 ```{r density}
 ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_density()
 ```
 
-### Bar plots
+### One variable (categorical)
+
+#### Bar plots 
 
 ```{r bar}
 ggplot(data = haloExp, mapping = aes(x = biological_class)) +
@@ -216,7 +224,23 @@ ggplot(data = haloExp, mapping = aes(x = biological_class)) +
   coord_flip()
 ```
 
-### Boxplots
+### Two variables (x = continuous or discrete; y = continuous or discrete)
+
+#### Scatter plots
+
+```{r scatter, message = F, warning = F}
+ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
+  geom_point()
+```
+
+```{r scatterGC, message = F, warning = F}
+ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression, color = GC)) +
+  geom_point()
+```
+
+### Two variables (x = categorical; y = continuous or discrete)
+
+#### Boxplot
 
 ```{r boxplot}
 ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
@@ -224,19 +248,9 @@ ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
   coord_flip()
 ```
 
-### Scatter plots
+### Several variables of different types
 
-```{r scatter}
-ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
-  geom_point()
-```
-
-```{r scatterGC}
-ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression, color = GC)) +
-  geom_point()
-```
-
-### 3D scatter plots
+#### 3D scatter plots (x,y,z = continuous or discrete)
 
 ```{r scatter3d, echo = F, message = F, warning = F}
 # https://fuzzyatelin.github.io/bioanth-stats/module-26/Module-26.html#an_interactive_3d_scatterplot
@@ -253,16 +267,15 @@ scatter3d = plot_ly(data = iris,
 plotly::layout(scatter3d,title = "Iris Dataset in 3D")
 ```
 
-### Heat maps
+#### Heat maps (continuous, discrete, and categorical variables altogether)
 
 ```{r heatmap, out.width = "400px", echo = F}
 knitr::include_graphics("img/figureSpectronaut.png")
 ```
 
-## Exercises
+## Exercise
 
-* Plot a density curve of the GC variable.
-* 
+* What other combinations of variables we can explore using the given dataset?
 
 # Resources
 
