@@ -64,20 +64,21 @@ final = left_join(funcat, exp, by = "locus_tag") %>%
                 biological_class = arCOG,
                 mRNA_expression = mean_abundance_rna_total_TP2,
                 protein_expression = mean_abundance_protein_lysate_TP2) %>% 
-  dplyr::select(ID,
-                protein_product,
-                biological_class,
-                mRNA_expression,
-                protein_expression,
-                length,
-                GC) %>% 
   mutate(mRNA_expression = log10(mRNA_expression),
          protein_expression = log10(protein_expression)) %>% 
   mutate(length_category = cut_number(final$length, n = 3) %>% as.character(),
          length_category = case_when(length_category == "[93,534]" ~ "short",
                                      length_category == "(534,996]" ~ "mid",
                                      length_category == "(996,4.11e+03]" ~ "long",
-                                     TRUE ~ "Unknown"))
+                                     TRUE ~ "Unknown")) %>% 
+  dplyr::select(ID,
+                protein_product,
+                biological_class,
+                mRNA_expression,
+                protein_expression,
+                length,
+                length_category,
+                GC)
 
 # writing final dataset
 openxlsx::write.xlsx(x = final, file = "data/haloExpression.xlsx", keepNA = T)
