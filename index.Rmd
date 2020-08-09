@@ -22,36 +22,39 @@ ppiFunCat = read_tsv("data/ppiFunCat.tsv")
 
 # Introduction
 
-In this session we will try to cover a few topics on data visualization.
+In this session we will cover a few topics on data visualization.
 
-1. We are going to reproduce a protein-protein interaction network I've made for a paper published recently. For that, we are going to use Cytoscape.
-2. We will explore different types of variables and plot them using the R language environment. More specifically we will use RStudio Cloud and a package called `ggplot2`.
+**1.** We are going to reproduce a protein-protein interaction network I've made for a paper published recently. For that, we are going to use Cytoscape.
+
+**2.** We will explore different types of variables and plot them using the R language environment. More specifically we will use RStudio Cloud and a package called `ggplot2`.
 
 # Network visualization using Cytoscape
 
 ## Context
 
-Is transcription and translation coupled in _Halobacterium salinarum_ ?
+In de Lomana et al. (2020), we studied the aspects of the translational regulation of _Halobacterium salinarum_. One of the questions we needed to answer to support one of our hypothesis was:
 
-Eukaryotes vs. Prokaryotes cellular organization
+* Is transcription and translation coupled in _H. salinarum_?
+
+We know that transcription and translation happen in different compartments in the eukaryotic cell: Transcription happens inside the nuclei. Translation happens in the cytoplasm.
+
+In the prokaryotic cell, we don't have a membrane to separate the genetic material from the cytoplasm, so transcription and translation are likely to happen simultaneously. Coupled transcription and translation is a fact in Bacteria. But what about Archaea?
+
+```{r transcriptionTranslation, out.width = "800px", echo = F}
+knitr::include_graphics("img/transcription_translation.jpg")
+```
+
+Source: https://www.mun.ca/biology/scarr/iGen3_05-09.html  
+
+In the Baliga Lab, a few years ago, Mark Facciotti and his colleagues performed a target coimmunoprecipitation experiment to find out what were the proteins coupled to specific proteins of the transcription machinery, the general transcription factors of _H. salinarum_. [Facciotti et al. 2007].
+
+Using those results, we checked if proteins of the translational machinery were present in the pulldown fractions of transcription proteins. Indeed, we were able to find a few, supporting our hypothesis of coupled transcription and translation:
 
 ```{r ppiFig, out.width = "500px", echo = F}
 knitr::include_graphics("img/ppiFig.jpg")
 ```
 
 RPs physically interact with transcription complex components. Diamonds represent RPs; squares represent transcription complex components. Tagged proteins used as bait in the immunoprecipitation experiment are highlighted by a black border. Arrowheads link bait to coimmunoprecipitated proteins. We labeled each of the seven modules obtained by the Newman-Girvan clustering algorithm using a different color [de Lomana et al., 2020].
-
-## Installing Cytoscape and apps (or plugins)
-
-1. Go to the Cytoscape [download page](https://cytoscape.org/download.html) and install it.
-
-2. Open Cytoscape program and install the following apps:
-  + clusterMaker2  
-  `Apps -> App Manager -> Search: clusterMaker2 -> Select listing -> Install`  
-  + Color Cast  
-  `Apps -> App Manager -> Search: Color Cast -> Select listing -> Install`  
-  + yFiles Layout Algorithms  
-  `Apps -> App Manager -> Search: yFiles -> Select listing -> Install`  
 
 ## Data structure
 
@@ -69,34 +72,40 @@ datatable(ppi)
 datatable(ppiFunCat)
 ```
 
+## Installing Cytoscape and apps (or plugins)
+
+**1.** Go to the Cytoscape [download page](https://cytoscape.org/download.html). Download and install it.  
+
+**2.** Open Cytoscape program and install the following apps:  
+
+  + clusterMaker2  
+  `Apps -> App Manager -> Search: clusterMaker2 -> Select listing -> Click on Install button`  
+  + Color Cast  
+  `Apps -> App Manager -> Search: Color Cast -> Select listing -> Click on Install button`  
+  + yFiles Layout Algorithms  
+  `Apps -> App Manager -> Search: yFiles -> Select listing -> Click on Install button`  
+
 ## Plotting a protein-protein interaction network
 
-### Execution
-
-#### Downloading files
-
-* Download the protein-protein interaction [file](https://alanlorenzetti.github.io/dataVisSession2020/data/ppi.sif).
-
-* Download the protein information [file](https://alanlorenzetti.github.io/dataVisSession2020/data/ppiFunCat.tsv).
-
-#### Step by Step
-
 **1.** Import the protein-protein interaction file `ppi.sif`.  
-`File -> Import -> Network from file`  
+`File -> Import -> Network from URL ->`  
+`https://alanlorenzetti.github.io/dataVisSession2020/data/ppi.sif`
 
-**2.** Load the protein information file.  
-
-  + In the node table panel, click on `Import Table from File`  
+**2.** Import the protein information table.  
+`File -> Import -> Table from URL ->` 
+`https://alanlorenzetti.github.io/dataVisSession2020/data/ppiFunCat.tsv ->`  
+`Where to Import Table Data: To selected networks only -> Click on OK button`
 
 **3.** Click on `Style` tab. Let's change the design of our network.
 
   + Select the `Sample1` preset style.
   + Change the label of nodes by selecting the `label` column.
   + Change the shape of nodes according to the functional `class` of proteins. Rectangles will represent `Transcription` class. Diamonds will represent `Translation` class.
-  + Click on `Node` tab and add a border to the nodes of proteins used as baits. Set size `2`.
+  + Add a thick border to the nodes of proteins used as baits. Set size `2`.
   + Make the nodes bigger. Select size `35`.
-  + Make the edges wider (size `1.5`) and `black`.
+  + Click on the `Edge` tab. Make the edges thicker (size `1.5`) and `black`.
   + Add arrowheads (`Target Arrow Shape; Delta`) to the end of edges.
+  + Remove edge labels.
   
 **4.** Apply the Newman-Girvan modularity algorithm to find modules of highly interconnected proteins. Use the default parameters.
 `Apps -> clusterMaker -> Community Cluster (GLay)`
@@ -113,7 +122,7 @@ datatable(ppiFunCat)
 **7.** Apply an automatic layout.
 
   + Select all proteins used as baits (those with borders).
-  + Apply yFiles `Hierarchic Layout Selected Nodes`. `Layouts -> Hierarchic Layout Selected Nodes`.
+  + Apply `yFiles Hierarchic Layout Selected Nodes`. `Layouts -> Hierarchic Layout Selected Nodes`.
   
 **8.** Save your network and export as an image file.
 
@@ -175,21 +184,21 @@ knitr::include_graphics("img/ggplotSyntax.png")
 
 ## Visualizations
 
-#### Histograms
+### Histograms
 
 ```{r histogram}
 ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_histogram()
 ```
 
-#### Density curves
+### Density curves
 
 ```{r density}
 ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_density()
 ```
 
-#### Bar plots
+### Bar plots
 
 ```{r bar}
 ggplot(data = haloExp, mapping = aes(x = biological_class)) +
@@ -197,7 +206,7 @@ ggplot(data = haloExp, mapping = aes(x = biological_class)) +
   coord_flip()
 ```
 
-#### Boxplots
+### Boxplots
 
 ```{r boxplot}
 ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
@@ -205,7 +214,7 @@ ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
   coord_flip()
 ```
 
-#### Scatter plots
+### Scatter plots
 
 ```{r scatter}
 ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
@@ -217,9 +226,9 @@ ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression
   geom_point()
 ```
 
-#### 3D scatter plots
+### 3D scatter plots
 
-#### Heat maps
+### Heat maps
 
 ```{r heatmap, out.width = "400px", echo = F}
 knitr::include_graphics("img/figureSpectronaut.png")
@@ -238,5 +247,7 @@ knitr::include_graphics("img/figureSpectronaut.png")
 # References 
 
 DE LOMANA, A. et al. Selective Translation of Low Abundance and Upregulated Transcripts in Halobacterium salinarum. mSystems, v. 5, n. 4, 28 jul. 2020.
+
+FACCIOTTI, M. T. et al. General transcription factor specified global gene regulation in archaea. Proceedings of the National Academy of Sciences of the United States of America, v. 104, n. 11, p. 4630–4635, 13 mar. 2007.
 
 MORAN, M. A. et al. Sizing up metatranscriptomics. The ISME Journal, v. 7, n. 2, p. 237–243, fev. 2013.
