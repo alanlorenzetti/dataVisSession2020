@@ -34,7 +34,7 @@ In this session we will cover a few topics on data visualization.
 
 ## Context
 
-In deLomana et al. [2020], we studied the aspects of the translational regulation of _Halobacterium salinarum_. One of the questions we needed to answer to support one of our hypothesis was:
+In deLomana et al. [2020], we studied a few aspects of _Halobacterium salinarum_ translational regulation. One of the questions we needed to answer to support one of our hypotheses was:
 
 * Is transcription and translation coupled in _H. salinarum_?
 
@@ -50,7 +50,7 @@ Source: https://www.mun.ca/biology/scarr/iGen3_05-09.html
 
 In the Baliga Lab, a few years ago, Mark Facciotti and his colleagues performed a target coimmunoprecipitation experiment to find out what were the proteins coupled to specific proteins of the transcription machinery, the general transcription factors of _H. salinarum_. [Facciotti et al. 2007].
 
-Using those results, we checked if proteins of the translational machinery were present in the pulldown fractions of transcription proteins. Indeed, we were able to find a few, supporting our hypothesis of coupled transcription and translation:
+Using those results, we checked if proteins of the translational machinery were present in the pulldown fractions when transcription proteins were used as baits. Indeed, we were able to find a few, supporting our hypothesis of coupled transcription and translation:
 
 ```{r ppiFig, out.width = "500px", echo = F}
 knitr::include_graphics("img/ppiFig.jpg")
@@ -136,6 +136,7 @@ datatable(ppiFunCat)
 ## Installing `ggplot2` package
 
 ```{r install, eval=F}
+# installing ggplot2 package
 install.packages("ggplot2")
 ```
 
@@ -158,7 +159,7 @@ haloExp = read.delim("https://alanlorenzetti.github.io/dataVisSession2020/data/h
 
   + The number of times you cursed this damn virus this week (5)
   + Number of stars in the Milky Way (250 billion or 2.5 x 10^11)
-  + Number of genes in a genome (2600)
+  + Number of genes in a compact genome (2600)
   + Number of messenger RNA molecules in a bacterial cell (~1800) [Moran et al. 2013]
   + Length of a messenger RNA (1573 nucleotides)
 
@@ -181,6 +182,7 @@ haloExp = read.delim("https://alanlorenzetti.github.io/dataVisSession2020/data/h
 * Characteristics:  
   + Color of eyes (black, brown, blue, green, red)
   + Biological process of a protein (Transcription, Cell Motility, Function unknown, etc).
+  + Transcript length (short, mid, long)
 
 ## Data structure
 
@@ -209,6 +211,7 @@ What kind of plot is suitable to my data? We have to think about the i) number o
 #### Histogram
 
 ```{r histogram}
+# plotting a histogram of transcript length
 ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_histogram()
 ```
@@ -216,16 +219,20 @@ ggplot(data = haloExp, mapping = aes(x = length)) +
 #### Density curves
 
 ```{r density}
+# plotting the density curve of transcript length
 ggplot(data = haloExp, mapping = aes(x = length)) +
   geom_density()
 ```
 
 ```{r densityColor}
+# plotting density curves for each one of the transcript length categories
 ggplot(data = haloExp, mapping = aes(x = length, color = length_category)) +
   geom_density()
 ```
 
 ```{r densityColorFacet, fig.width = 10}
+# plotting density curves for each one of the transcript length categories
+# one panel per legnth category
 ggplot(data = haloExp, mapping = aes(x = length, color = length_category)) +
   geom_density(show.legend = FALSE) +
   facet_wrap(~ length_category)
@@ -236,12 +243,15 @@ ggplot(data = haloExp, mapping = aes(x = length, color = length_category)) +
 #### Bar plots 
 
 ```{r bar}
+# plotting a bar chart for the protein biological classes
 ggplot(data = haloExp, mapping = aes(x = biological_class)) +
   geom_bar() +
   coord_flip()
 ```
 
 ```{r barColor}
+# plotting a bar chart for the protein biological classes
+# colors were added to distinguish each one of the classes
 ggplot(data = haloExp, mapping = aes(x = biological_class, fill = biological_class)) +
   geom_bar(show.legend = FALSE) +
   coord_flip()
@@ -252,17 +262,23 @@ ggplot(data = haloExp, mapping = aes(x = biological_class, fill = biological_cla
 #### Scatter plots
 
 ```{r scatter, message = F, warning = F}
+# plotting a scatter plot of protein expression in function of mRNA expression
 ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
   geom_point()
 ```
 
 ```{r scatterTrend, message = F, warning = F}
+# plotting a scatter plot of protein expression in function of mRNA expression
+# a trend line was added to show the linear correspondence of both
 ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
   geom_point() +
   geom_smooth(method = "lm")
 ```
 
 ```{r scatterTrendFacet, fig.width = 10, message = F, warning = F}
+# plotting a scatter plot of protein expression in function of mRNA expression
+# a trend line was added to show the linear correspondence of both
+# plots were separated in panels according to the transcript length category
 ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
   geom_point() +
   geom_smooth(method = "lm") +
@@ -270,24 +286,21 @@ ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression
 ```
 
 ```{r scatterGC, message = F, warning = F}
+# plotting a scatter plot of protein expression in function of mRNA expression
+# colors were added according to the GC content of the transcripts
 ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression, color = GC)) +
   geom_point()
 ```
-
-#### Bivariate distribution
-
-```{r biDist, message = F, warning = F}
-ggplot(data = haloExp, mapping = aes(x = mRNA_expression, y = protein_expression)) +
-  geom_hex()
-```
-
-
 
 ### Two variables (x = categorical; y = continuous or discrete)
 
 #### Boxplot
 
+[What is a box plot?](https://en.wikipedia.org/wiki/Box_plot)
+
 ```{r boxplot}
+# plotting a boxplot of GC content for the transcripts
+# separated by biological classes
 ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
   geom_boxplot() +
   coord_flip()
@@ -298,6 +311,7 @@ ggplot(data = haloExp, mapping = aes(y = GC, x = biological_class)) +
 #### Count plot
 
 ```{r countPlot}
+# plotting a count plot of length category and biological class
 ggplot(data = haloExp, mapping = aes(y = length_category, x = biological_class)) +
   geom_count() +
   coord_flip()
