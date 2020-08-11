@@ -141,11 +141,11 @@ datatable(ppiFunCat)
 
 ## Loading RStudio Cloud environment
 
-**1.** Go to [RStudio Cloud website](https://rstudio.cloud/)
+**1.** Go to [RStudio Cloud website](https://rstudio.cloud/)  
 
-**2.** Log in with your Google account
+**2.** Log in with your Google account  
 
-**3.** Create a new project. Suggestion: DataVis
+**3.** Create a new project. Suggestion: DataVis  
 
 ## Installing `ggplot2` package
 
@@ -154,7 +154,7 @@ datatable(ppiFunCat)
 install.packages("ggplot2")
 ```
 
-## Loading libs and the table we will work with
+## Loading `ggplot2` package and data
 
 ```{r loadLibs}
 # loading ggplot2
