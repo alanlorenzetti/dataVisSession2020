@@ -142,7 +142,9 @@ datatable(ppiFunCat)
 ## Loading RStudio Cloud environment
 
 **1.** Go to [RStudio Cloud website](https://rstudio.cloud/)
+
 **2.** Log in with your Google account
+
 **3.** Create a new project. Suggestion: DataVis
 
 ## Installing `ggplot2` package
