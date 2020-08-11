@@ -26,7 +26,7 @@ ppiFunCat = read_tsv("data/ppiFunCat.tsv")
 
 In this session we will cover a few topics on data visualization.
 
-**1.** We are going to reproduce a protein-protein interaction network I've made for a paper published recently. For that, we are going to use Cytoscape.
+**1.** We are going to recreate a protein-protein interaction network plot I've made for a paper published recently. For that, we are going to use Cytoscape.
 
 **2.** We will explore different types of variables and plot them using the R language environment. More specifically we will use RStudio Cloud and a package called `ggplot2`.
 
@@ -48,7 +48,7 @@ knitr::include_graphics("img/transcription_translation.jpg")
 
 Source: https://www.mun.ca/biology/scarr/iGen3_05-09.html  
 
-In the Baliga Lab, a few years ago, Marc Facciotti and his colleagues performed a target coimmunoprecipitation experiment to find out what were the proteins coupled to specific proteins of the transcription machinery, the general transcription factors of _H. salinarum_. [Facciotti et al. 2007].
+In the Baliga Lab, a few years ago, Marc Facciotti and his colleagues performed a target coimmunoprecipitation experiment to find out the proteins coupled to the general transcription factors of _H. salinarum_, that is proteins of the transcription machinery. [Facciotti et al. 2007].
 
 ```{r coipFig, out.width = "500px", echo = F}
 knitr::include_graphics("img/coip.png")
@@ -139,6 +139,12 @@ datatable(ppiFunCat)
 
 # Data visualization in R using the `ggplot2` package
 
+## Loading RStudio Cloud environment
+
+**1.** Go to [RStudio Cloud website](https://rstudio.cloud/)
+**2.** Log in with your Google account
+**3.** Create a new project. Suggestion: DataVis
+
 ## Installing `ggplot2` package
 
 ```{r install, eval=F}
@@ -173,7 +179,7 @@ haloExp = read.delim("https://alanlorenzetti.github.io/dataVisSession2020/data/h
 
 * Measures:
 
-  + Height of an individual (162.56 centimeters) 
+  + Height of an individual (162.56 centimeters)
   + Weight of an individual (89.77 kilograms)
   + mRNA expression (1401.75 arbitrary expression unit)
   + Protein expression (1500.62 arbitrary expression unit)
@@ -182,12 +188,11 @@ haloExp = read.delim("https://alanlorenzetti.github.io/dataVisSession2020/data/h
 
   + GC content, i.e., frequency of Guanine or Cytosine bases in a transcript (e.g. 973/1573 = 0.619)
   
-
 ### Categorical variables
 
 * Characteristics:  
   + Color of eyes (black, brown, blue, green, red)
-  + Biological process of a protein (Transcription, Cell Motility, Function unknown, etc).
+  + Biological process of a protein (Transcription, Cell Motility, Unknown function, etc).
   + Transcript length (short, mid, long)
 
 ## Data structure
@@ -198,11 +203,11 @@ datatable(haloExp)
 
 ## Syntax
 
-`ggplot(data = <YOUR_DATASET_HERE>, aes(x = <X_AXIS_VARIABLE>, y = <Y_AXIS_VARIABLE>))`  
+`ggplot(data = <YOUR_DATASET_HERE>, mapping = aes(x = <X_AXIS_VARIABLE>, y = <Y_AXIS_VARIABLE>))`  
 +  
 `geom_<TYPE_OF_CHART>`  
 +  
-`additional modifications`
+`additional modifications`  
 
 ```{r syntax, echo=F, include = F}
 knitr::include_graphics("img/ggplotSyntax.png")
@@ -238,7 +243,7 @@ ggplot(data = haloExp, mapping = aes(x = length, color = length_category)) +
 
 ```{r densityColorFacet, fig.width = 10}
 # plotting density curves for each one of the transcript length categories
-# one panel per legnth category
+# one panel per length category
 ggplot(data = haloExp, mapping = aes(x = length, color = length_category)) +
   geom_density(show.legend = FALSE) +
   facet_wrap(~ length_category)
@@ -350,7 +355,7 @@ knitr::include_graphics("img/figureSpectronaut.png")
 
 ## Exercise
 
-* What other combinations of variables we can explore using the given dataset?
+* What other combinations of variables we can explore using the given data set?
 
 # Resources
 
