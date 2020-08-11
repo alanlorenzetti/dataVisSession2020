@@ -48,7 +48,13 @@ knitr::include_graphics("img/transcription_translation.jpg")
 
 Source: https://www.mun.ca/biology/scarr/iGen3_05-09.html  
 
-In the Baliga Lab, a few years ago, Mark Facciotti and his colleagues performed a target coimmunoprecipitation experiment to find out what were the proteins coupled to specific proteins of the transcription machinery, the general transcription factors of _H. salinarum_. [Facciotti et al. 2007].
+In the Baliga Lab, a few years ago, Marc Facciotti and his colleagues performed a target coimmunoprecipitation experiment to find out what were the proteins coupled to specific proteins of the transcription machinery, the general transcription factors of _H. salinarum_. [Facciotti et al. 2007].
+
+```{r coipFig, out.width = "500px", echo = F}
+knitr::include_graphics("img/coip.png")
+```
+
+Source: https://www.creativebiomart.net/resource/fast-chromatin-immunoprecipitation-assay-392.htm  
 
 Using those results, we checked if proteins of the translational machinery were present in the pulldown fractions when transcription proteins were used as baits. Indeed, we were able to find a few, supporting our hypothesis of coupled transcription and translation:
 
