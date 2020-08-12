@@ -357,12 +357,13 @@ knitr::include_graphics("img/figureSpectronaut.png")
 
 ## Exercise
 
-* What other combinations of variables we can explore using the given data set?
+* What other combinations of variables can we explore using the given data set?
 
 # Resources
 
 * [RStudio IDE cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf)
 * [`ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) 
+* [List of cheatsheets by RStudio](https://rstudio.com/resources/cheatsheets/)
 
 # References 
 
